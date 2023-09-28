@@ -54,46 +54,50 @@ function loadGame(res){
 
 function comparar(game){
     allreadyCompared.push(game.name);
-    let html = document.getElementById("comparador");
+    var contenedor = document.getElementById('contenedor');
+    var nuevaSeccion = document.createElement('div');
+    nuevaSeccion.id = game.name;
+
     if(game.name === randomGame.name){
-        html.innerHTML = `<h1>¡Has acertado!</h1>`;
+        nuevaSeccion.innerHTML += `<p>¡Has acertado!</p>`;
+        document.getElementById('contenedor').appendChild(nuevaSeccion);
         return;
     }
-    html += `<p>${game.name}</p>`;
+    nuevaSeccion.innerHTML += `<p>${game.name}</p>`;
     if(game.metacritic < randomGame.metacritic){
-        html += `<p>Metacritic: MAYOR A ${game.metacritic}</p>`;
+        nuevaSeccion.innerHTML += `<p>Metacritic: MAYOR A ${game.metacritic}</p>`;
     }else if(game.metacritic > randomGame.metacritic){
-        html += `<p>Metacritic: MENOR A ${game.metacritic}</p>`;
+        nuevaSeccion.innerHTML += `<p>Metacritic: MENOR A ${game.metacritic}</p>`;
     }else{
-        html += `<p>Metacritic: IGUAL A ${game.metacritic}</p>`;
+        nuevaSeccion.innerHTML += `<p>Metacritic: IGUAL A ${game.metacritic}</p>`;
     }
 
-    html += `<ul>Generos:</ul>`;
+    nuevaSeccion.innerHTML += `<ul>Generos:</ul>`;
     game.genres.forEach(element => {
         randomGame.genres.forEach(element2 => {
             if(element.name === element2.name)
-                html += `<li>${element.name}</li>`;
+            nuevaSeccion.innerHtML += `<li>${element.name}</li>`;
         });
     });
 
-    html += `<ul>Tags:</ul>`;
+    nuevaSeccion.innerHTML += `<ul>Tags:</ul>`;
     game.tags.forEach(element => {
         randomGame.tags.forEach(element2 => {
             if(element.name === element2.name)
-                html += `<li>${element.name}</li>`;
+            nuevaSeccion.innerHTML += `<li>${element.name}</li>`;
         });
     });
 
-    html += `<ul>Desarrolladores:</ul>`;
+    nuevaSeccion.innerHTML += `<ul>Desarrolladores: </ul>`;
     game.develpers.forEach(element => {
         randomGame.develpers.forEach(element2 => {
             if(element.name === element2.name)
-                html += `<li>${element.name}</li>`;
+            nuevaSeccion.innerHTML += `<li>${element.name}</li>`;
         });
     });
 
-    html += `<p>Fecha de lanzamiento es ${compararFecha(game)} a: ${game.relased[0]}/${game.relased[1]}/${game.relased[2]}</p>`;
-    document.getElementById("comparador").innerHTML = html;
+    nuevaSeccion.innerHTML += `<p>Fecha de lanzamiento es ${compararFecha(game)} a: ${game.relased[0]}/${game.relased[1]}/${game.relased[2]}</P>`;
+    document.getElementById('contenedor').appendChild(nuevaSeccion);
 }
 
 function compararFecha(game){

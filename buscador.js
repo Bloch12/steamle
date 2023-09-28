@@ -20,10 +20,6 @@ async function filtrarJuegos(texto) {
     list.innerHTML = html;
 }
 
-
-
-
-
 function seleccionarJuego(e){
     let texto = e;
     document.getElementById("nombre").value = texto;
