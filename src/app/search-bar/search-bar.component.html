@@ -2,13 +2,11 @@
     <form class="containerForm" id="containerForm">
         <label for="nombre">Buscar Juego:</label>
         <input  type="text" name= "search" [(ngModel)] = "search"  (keyup)="filtrarJuegos()">
-        <button id="enviar">Enviar</button>
+        <button id="enviar" (click)="buscarJuego()">Enviar</button>
     </form>
-    <ul id="lista">
-        
-    </ul>
     <ul *ngFor = "let e of filterList" >
        <li class = "juego" (click) = seleccionarJuego(e.name)> {{e.name}} </li>
     </ul>
+    <comparador id="comparador"></comparador>
 </section>
 

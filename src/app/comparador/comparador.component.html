@@ -1,0 +1,10 @@
+<div *ngFor = "let j of juegosBuscados">
+    <div *ngIf = "j.nombre === juegoRandom; else elseBlock"> 
+        <p> ¡Has acertado! </p>
+    </div>
+    <ng-template #elseBlock>
+        <p> {{j.name}} </p>
+        <p> {{ComapararScore(j)}} </p>
+        <p> {{compararFecha(j)}} </p>
+    </ng-template>
+</div>
