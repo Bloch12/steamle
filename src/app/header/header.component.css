@@ -1,0 +1,29 @@
+.header{
+background-color: #171d25;
+
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+
+}
+
+.menu li img{
+    width: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+.menu li a{
+    text-decoration: none;
+    color: gray;
+    margin: 5px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size:larger;
+    font-weight: 1000;
+}
+

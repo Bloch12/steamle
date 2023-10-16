@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FormsModule } from '@angular/forms';
 import { ComparadorComponent } from './comparador/comparador.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
-    ComparadorComponent
+    ComparadorComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

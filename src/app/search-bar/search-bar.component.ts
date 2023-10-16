@@ -50,12 +50,11 @@ export class SearchBarComponent {
     textoAFecha(texto: string): number[] {
       let fechaS: string[] = texto.split("-");
       let fecha: number[] = [];
-      fechaS.forEach((element: string) => {
-        if (isNaN(parseInt(element))) {
+      for(let i:number = 0; i < fechaS.length; i++){
+        if(isNaN(parseInt(fechaS[i])))
           return fecha;
-        }
-        fecha.push(parseInt(element));
-      });
+        fecha.push(parseInt(fechaS[i]));
+      }
       return fecha;
     }
   
