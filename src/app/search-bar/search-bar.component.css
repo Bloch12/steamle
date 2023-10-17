@@ -1,0 +1,57 @@
+/* Estilos para el contenedor principal */
+.containerPrincipal {
+    text-align: center;
+  }
+  
+  /* Estilos para la barra de búsqueda un poco más grande */
+  .containerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 15px; /* Aumenta el padding para hacerla un poco más grande */
+  }
+  
+  label {
+    font-size: 20px; /* Hacer el texto un poco más grande */
+    display: block;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px; /* Mantiene el tamaño del input */
+    font-size: 16px; /* Tamaño de fuente normal */
+    border: none;
+    outline: none;
+  }
+  
+  /* Estilos para el contenedor de resultados un poco más pequeños */
+  ul {
+    list-style: none;
+    padding: 0;
+    background: white;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%; /* Misma anchura que la barra de búsqueda */
+  }
+  
+  .juego {
+    padding: 5px; /* Reduce el padding para hacer los elementos más pequeños */
+    cursor: pointer;
+    font-size: 14px; /* Tamaño de fuente un poco más pequeño */
+  }
+  
+  /* Estilo para resaltar al pasar el ratón sobre los resultados */
+  .juego:hover {
+    background-color: #f0f0f0;
+  }

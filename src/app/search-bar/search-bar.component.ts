@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input, inject, ViewChild } from '@angular/core';
+import { Game, GameJson } from '../../models/game';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'search-bar',
@@ -8,27 +11,32 @@ import { Component } from '@angular/core';
 
 
 export class SearchBarComponent {
-    search: string = "";
+    @Input() search: string = "";
+    @Input() buscar!: Function;
     filterList: any[] = [];
+    http = inject(HttpClient);
 
-    async filtrarJuegos() {
+    filtrarJuegos() {
+      
       if(this.search.trim() == "" || this.search.trim().length < 3){
         this.filterList = [];   
         return;
       }
+      let games!: GameJson[]; 
+      this.http.get<GameJson[]>("../../assets/names.json").subscribe((res) => {
+        games = res;});
 
-      const games: any =  await (await fetch("../../assets/names.json")).json();
-           
-      this.filterList = games.results.filter((game: any)=>
+      this.filterList = games.filter((game: any)=>
         game.name.toLowerCase().includes(this.search.toLowerCase())
       );
+      
     }
   
     seleccionarJuego(e:string){
         this.search = e;
-        this.buscarJuego();
+        this.filterList = [];
     }
-
+    /*
     async buscarJuego(){
       const games: any = await (await fetch("../../assets/names.json")).json();
       let game: any = games.results.find((game: any) => game.name.toLowerCase() === this.search.toLowerCase());
@@ -38,13 +46,15 @@ export class SearchBarComponent {
         this.filterList = [];
         return;
       } 
+
       const url: string = "https://api.rawg.io/api/games/" + game.id + "?key=6bf148d28f1c48dd90a904b72e52b717";
-      game = await fetch(url);
-      game = await game.json();
-      game = this.loadGame(game);
-      let aux = document.getElementById("comparador");
+      this.http.get(url).subscribe(async (res: any) => {
+        game = await game.json();
+        this.loadGame(game);
+      });
       this.search = "";
       this.filterList = [];
+
     }
 
     textoAFecha(texto: string): number[] {
@@ -59,14 +69,16 @@ export class SearchBarComponent {
     }
   
     loadGame(res: any){
-      let game: any = {};
-      game.name = res.name;
-      game.metacritic = res.metacritic;
-      game.genres = res.genres;
-      game.tags = res.tags;
-      game.develpers = res.developers;
-      game.relased = this.textoAFecha(res.released);
-      return game;
-  }
-  
+      let game: Game = {
+        name: res.name as string,
+        rating: res.metacritic as number,
+        genres: res.genres as string[],
+        tags: res.tags as string[],
+        developers: res.developers as string[],
+        relased: this.textoAFecha(res.released), 
+        description: res.description_raw as string,
+        image: res.background_image as string
+      }
+    }
+  */
   }

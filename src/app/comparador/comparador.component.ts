@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 
 @Component({
   selector: 'comparador',
@@ -6,13 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./comparador.component.css']
 })
 export class ComparadorComponent {
+    /*
     juegoRandom: any = {};
+    juego: string = "";
     juegosBuscados: any[] = [];
     
-    public Agregar(game: any){
+    @Input() public Agregar(game: any){
         if(this.juegosBuscados.includes(game.name))
             return;
         this.juegosBuscados.push(game.name);
+        this.juego = game.name;
     }
 
     ComapararScore(game: any):string{
@@ -40,5 +43,5 @@ export class ComparadorComponent {
             return `Fecha de lanzamiento es menor a ${game.relased[0]}/${game.relased[1]}/${game.relased[2]}`;
         return `Fecha de lanzamiento es igual a ${game.relased[0]}/${game.relased[1]}/${game.relased[2]}`; 
     }
-
+*/
 }
