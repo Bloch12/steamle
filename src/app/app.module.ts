@@ -8,7 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { ComparadorComponent } from './comparador/comparador.component';
 import { HeaderComponent } from './header/header.component';
 import {HttpClientModule} from '@angular/common/http';
-import { ComparedGameComponent } from './compared-game/compared-game.component'; 
+import { ComparedGameComponent } from './compared-game/compared-game.component';
+import { FooterComponent } from './footer/footer.component'; 
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ComparedGameComponent } from './compared-game/compared-game.component';
     SearchBarComponent,
     ComparadorComponent,
     HeaderComponent,
-    ComparedGameComponent
+    ComparedGameComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

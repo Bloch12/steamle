@@ -16,8 +16,15 @@ export class SearchBarComponent {
     filterList: any[] = [];
     http = inject(HttpClient);
 
-    filterGame() {
+    filterGame(event: KeyboardEvent) {
       
+      if(event.key=="Enter"){
+        this.search= this.filterList[0];
+        this.triggerButton;
+        this.filterList=[];
+        this.search="";
+        return;
+      }
       if(this.search.trim() == "" || this.search.trim().length < 3){
         this.filterList = [];   
         return;
@@ -34,8 +41,10 @@ export class SearchBarComponent {
     }
   
     selectGame(e:string){
-        this.search = e;
-        this.filterList = [];
+        this.search= e;
+        this.triggerButton;
+        this.filterList=[];
+        this.search="";
     }
 
     triggerButton(){

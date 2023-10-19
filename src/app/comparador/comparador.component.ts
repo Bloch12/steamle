@@ -79,6 +79,7 @@ export class ComparadorComponent implements OnInit {
     }
 
     ngOnInit(){
+        /*
             this.http.get<GameJson[]>("../../assets/names.json").subscribe(res =>{
                 let aux:GameJson = res[Math.floor(Math.random() * res.length)];
                 const url = "https://api.rawg.io/api/games/" + aux.id + "?key=6bf148d28f1c48dd90a904b72e52b717";
@@ -88,6 +89,7 @@ export class ComparadorComponent implements OnInit {
                  });
         
             });
+        */    
     }
 
     setHintTrue(){
