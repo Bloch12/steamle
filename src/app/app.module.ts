@@ -7,7 +7,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FormsModule } from '@angular/forms';
 import { ComparadorComponent } from './comparador/comparador.component';
 import { HeaderComponent } from './header/header.component';
-import {HttpClientModule} from '@angular/common/http'; 
+import {HttpClientModule} from '@angular/common/http';
+import { ComparedGameComponent } from './compared-game/compared-game.component'; 
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {HttpClientModule} from '@angular/common/http';
     AppComponent,
     SearchBarComponent,
     ComparadorComponent,
-    HeaderComponent
+    HeaderComponent,
+    ComparedGameComponent
   ],
   imports: [
     BrowserModule,

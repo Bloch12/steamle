@@ -1,12 +1,6 @@
-\<!--  
-<search-bar></search-bar>
-
-<div *ngFor = "let j of juegosBuscados">
-    <div *ngIf = "j.nombre === juegoRandom; else elseBlock"> 
-        <p> ¡Has acertado! </p>
-    </div>
-    <ng-template #elseBlock>
-        <p> {{j.name}} </p>
-    </ng-template>
+<search-bar (button) = "addGame($event)"></search-bar>
+<button *ngIf = "searchedGames.length >= 5 && !hint" (click) = setHintTrue()> Pista</button>
+<img *ngIf = "hint"  src="randomGame.image" alt = "randomGame.name image" style="width: 100px; height: 100px;">
+<div *ngFor = "let s of searchedGames">
+    <app-compared-game  [userGame]= 's' [systemGame] = "randomGame" ></app-compared-game>
 </div>
-    -->
