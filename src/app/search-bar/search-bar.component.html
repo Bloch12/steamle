@@ -4,7 +4,7 @@
         <img id="enviar" (click)="triggerButton()" src="../../assets/enviar.png">
     </form>
     <ul >
-       <li *ngFor = "let e of filterList" class = "juego" (click) = selectGame(e.name)> {{e.name}} </li>
+       <li *ngFor = "let e of filterList" class = "juego" (click) = selectGame(e)> {{e}} </li>
     </ul>
 </section>
 

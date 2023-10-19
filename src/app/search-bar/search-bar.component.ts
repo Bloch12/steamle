@@ -13,18 +13,17 @@ import { HttpClient } from '@angular/common/http';
 export class SearchBarComponent {
     search: string = "";
     @Output() button = new EventEmitter<string | undefined>;
-    filterList: any[] = [];
+    filterList: string[] = [];
     http = inject(HttpClient);
 
     filterGame(event: KeyboardEvent) {
       
       if(event.key=="Enter"){
         this.search= this.filterList[0];
-        this.triggerButton;
-        this.filterList=[];
-        this.search="";
+        this.triggerButton();
         return;
       }
+
       if(this.search.trim() == "" || this.search.trim().length < 3){
         this.filterList = [];   
         return;
@@ -33,22 +32,26 @@ export class SearchBarComponent {
       let games!: GameJson[]; 
 
       this.http.get<GameJson[]>("../../assets/names.json").subscribe(res =>{games = res
-          this.filterList = games.filter((game: any)=>
+          games = games.filter((game: any)=>
             game.name.toLowerCase().includes(this.search.toLowerCase())
           );
+
+          this.filterList = games.map((game: any)=> game.name);
       });
+
+      console.log(this.filterList);
       
     }
   
     selectGame(e:string){
         this.search= e;
-        this.triggerButton;
-        this.filterList=[];
-        this.search="";
+        this.triggerButton();
     }
 
     triggerButton(){
       this.button.emit(this.search);
+      this.filterList = [];
+      this.search = "";
     }
 
   }
