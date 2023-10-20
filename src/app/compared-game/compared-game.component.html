@@ -3,10 +3,10 @@
     <img src = "{{userGame.image}}" alt = "{{userGame.name}} image" style="width: 100px; height: 100px;">
     <ul>
         <li [ngClass]="compareNumber(userGame.rating,systemGame.rating)">valoracion: {{userGame.rating}}</li>
-        <li *ngFor = "let d of userGame.developers"> desarrollador: {{d}} </li>
-        <li> Fecha de Lanzamiento: {{userGame.relased[2]}}/{{userGame.relased[1]}}/{{userGame.relased[0]}} </li>
-        <li  *ngFor = "let g of userGame.genres"> genero: {{g}} </li>
-        <li *ngFor = "let t of userGame.tags"> tags: {{t}} </li>
+        <li [ngClass]="compareString(d,systemGame.developers)" *ngFor = "let d of userGame.developers"> desarrollador: {{d}} </li>
+        <li [ngClass]="compareDate(userGame.relased,systemGame.relased)"> Fecha de Lanzamiento: {{userGame.relased[2]}}/{{userGame.relased[1]}}/{{userGame.relased[0]}} </li>
+        <li [ngClass]="compareString(g,systemGame.genders)" *ngFor = "let g of userGame.genders"> genero: {{g}} </li>
+        <li [ngClass]="compareString(t,systemGame.tags)"  *ngFor = "let t of userGame.tags"> tags: {{t}} </li>
     </ul>
     <h3 *ngIf = "userGame.name === systemGame.name"> Ganaste... Has Acertado!!!</h3>
 </div>

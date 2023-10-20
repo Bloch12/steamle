@@ -3,7 +3,7 @@
         <input type="text" autocomplete="off" name= "search" [(ngModel)] = "search"  (keyup)="filterGame($event)" placeholder="Buscar Juego">
         <img id="enviar" (click)="triggerButton()" src="../../assets/enviar.png">
     </form>
-    <ul >
+    <ul>
        <li *ngFor = "let e of filterList" class = "juego" (click) = selectGame(e)> {{e}} </li>
     </ul>
 </section>

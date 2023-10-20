@@ -17,7 +17,6 @@ export class ComparadorComponent implements OnInit {
     hint: boolean = false;
 
     public addGame(search:String | undefined){
-        
         if(!search)
             return;
 
@@ -38,7 +37,6 @@ export class ComparadorComponent implements OnInit {
                this.searchedGames.push(this.loadGame(res));
             });
       });
-      console.log(this.searchedGames);
     }
   
     textToDate(texto: string): number[] {
@@ -56,7 +54,7 @@ export class ComparadorComponent implements OnInit {
         let game: Game = {
           name: res.name as string,
           rating: res.metacritic as number,
-          genres:[],
+          genders:[],
           tags:[],
           developers:[],
           relased: this.textToDate(res.released), 
@@ -64,7 +62,7 @@ export class ComparadorComponent implements OnInit {
           image: res.background_image as string
         }
         res.genres.forEach((genre: any) => {
-            game.genres.push(genre.name);
+            game.genders.push(genre.name);
         });
 
         res.tags.forEach((tag: any) => {

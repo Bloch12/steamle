@@ -1,6 +1,9 @@
 .header{
-background-color: #171d25;
-
+    background-color: #171d25;
+    display: flex;
+    flex-direction: line;
+    align-items: center;
+    justify-content: center;
 }
 
 .menu{
@@ -25,5 +28,28 @@ background-color: #171d25;
     font-family: 'Noto Sans', sans-serif;
     font-size:larger;
     font-weight: 1000;
+}
+
+.Games{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+
+.Games li a{
+    text-decoration: none;
+    color: gray;
+    margin: 5px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size:larger;
+    font-weight: 1000;
+}
+
+
+.Games li a:hover{
+    color: #568fb8;
+    text-decoration: underline;
 }
 

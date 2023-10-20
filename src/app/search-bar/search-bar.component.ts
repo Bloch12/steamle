@@ -38,9 +38,7 @@ export class SearchBarComponent {
 
           this.filterList = games.map((game: any)=> game.name);
       });
-
-      console.log(this.filterList);
-      
+    
     }
   
     selectGame(e:string){

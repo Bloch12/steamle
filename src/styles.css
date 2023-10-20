@@ -8,8 +8,3 @@ body{
     background-color: #1b2838;
 }
 
-comparator search-bar{
-    display: flex;
-    justify-content: center;
-    margin: 100px;
-}

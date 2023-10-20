@@ -9,7 +9,8 @@ import { ComparadorComponent } from './comparador/comparador.component';
 import { HeaderComponent } from './header/header.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ComparedGameComponent } from './compared-game/compared-game.component';
-import { FooterComponent } from './footer/footer.component'; 
+import { FooterComponent } from './footer/footer.component';
+import { IndexComponent } from './index/index.component'; 
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FooterComponent } from './footer/footer.component';
     ComparadorComponent,
     HeaderComponent,
     ComparedGameComponent,
-    FooterComponent
+    FooterComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,

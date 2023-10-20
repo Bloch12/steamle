@@ -1,7 +1,7 @@
 export interface Game {
     name: string;
     description: string;
-    genres: string[];
+    genders: string[];
     tags: string[];
     image: string;
     rating: number;
