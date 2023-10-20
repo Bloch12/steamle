@@ -1,6 +1,6 @@
 <section class="containerPrincipal">
     <form class="containerForm" id="containerForm">
-        <input type="text" name= "search" [(ngModel)] = "search"  (keyup)="filterGame($event)" placeholder="Buscar Juego">
+        <input type="text" autocomplete="off" name= "search" [(ngModel)] = "search"  (keyup)="filterGame($event)" placeholder="Buscar Juego">
         <img id="enviar" (click)="triggerButton()" src="../../assets/enviar.png">
     </form>
     <ul >
