@@ -1,4 +1,4 @@
-<div>
+<li>
     <h3>{{userGame.name}}</h3>
     <img src = "{{userGame.image}}" alt = "{{userGame.name}} image" style="width: 100px; height: 100px;">
     <ul>
@@ -9,4 +9,4 @@
         <li [ngClass]="compareString(t,systemGame.tags)"  *ngFor = "let t of userGame.tags"> tags: {{t}} </li>
     </ul>
     <h3 *ngIf = "userGame.name === systemGame.name"> Ganaste... Has Acertado!!!</h3>
-</div>
+</li>

@@ -1,9 +1,9 @@
-
+<section class = "comparatorContainter">
   <button *ngIf = "searchedGames.length >= 1 && !hint" (click) = setHintTrue()> Pista</button>
   <img *ngIf = "hint"  src="{{randomGame.image}}" alt = "randomGame.name image" style="width: 100px; height: 100px;">
   <search-bar (button)="addGame($event)"></search-bar>
-  <div class="comparedGames">
+  <ul class="comparedGames">
     <app-compared-game  *ngFor = "let s of searchedGames" [userGame]= 's' [systemGame] = "randomGame" ></app-compared-game>
-  </div>
-
+  </ul>
+</section>
 
