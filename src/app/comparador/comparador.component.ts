@@ -77,6 +77,7 @@ export class ComparadorComponent implements OnInit {
     }
 
     ngOnInit(){
+        
             this.http.get<GameJson[]>("../../assets/names.json").subscribe(res =>{
                 let aux:GameJson = res[this.getRandom(res.length)];
                 const url = "https://api.rawg.io/api/games/" + aux.id + "?key=6bf148d28f1c48dd90a904b72e52b717";
@@ -88,7 +89,7 @@ export class ComparadorComponent implements OnInit {
 
             if(localStorage.getItem("searchedGames")){
                 if(localStorage.getItem("date") == JSON.stringify(this.getCurrentDate())) {
-                this.searchedGames = JSON.parse(localStorage.getItem("searchedGames") || "");
+                    this.searchedGames = JSON.parse(localStorage.getItem("searchedGames") || "");
                 }
                 localStorage.removeItem("searchedGames");
                 localStorage.removeItem("date");
