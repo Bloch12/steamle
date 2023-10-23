@@ -78,19 +78,46 @@ export class ComparadorComponent implements OnInit {
 
     ngOnInit(){
             this.http.get<GameJson[]>("../../assets/names.json").subscribe(res =>{
-                let aux:GameJson = res[Math.floor(Math.random() * res.length)];
+                let aux:GameJson = res[this.getRandom(res.length)];
                 const url = "https://api.rawg.io/api/games/" + aux.id + "?key=6bf148d28f1c48dd90a904b72e52b717";
                 this.http.get(url).subscribe((res: any) => {
                     this.randomGame = this.loadGame(res);
                     console.log(this.randomGame);
                  });
-        
             });
-          
+
+            if(localStorage.getItem("searchedGames")){
+                if(localStorage.getItem("date") == JSON.stringify(this.getCurrentDate())) {
+                this.searchedGames = JSON.parse(localStorage.getItem("searchedGames") || "");
+                }
+                localStorage.removeItem("searchedGames");
+                localStorage.removeItem("date");
+            }
     }
 
     setHintTrue(){
         this.hint = true;
     }
 
+    ngOnDestroy(){
+        localStorage.setItem("searchedGames", JSON.stringify(this.searchedGames));
+        let dateArray = this.getCurrentDate();
+        localStorage.setItem("date", JSON.stringify(dateArray));
+    }
+
+    getRandom(maxRange: number): number{
+
+        let dateArray= this.getCurrentDate();
+        let seed = dateArray[0] * (dateArray[1] + 1) + dateArray[2];
+        let random = Math.sin(seed) * 10000;
+        random = random - Math.floor(random);
+        random = random * maxRange
+        return Math.floor(random);
+    }
+
+    getCurrentDate(): number[]{
+        let date = new Date();
+        let dateArray = [date.getFullYear(), date.getMonth(), date.getDate()];
+        return dateArray;
+    }
 }
