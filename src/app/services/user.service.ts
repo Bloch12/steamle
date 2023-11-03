@@ -10,6 +10,7 @@ export class userService{
     private async addUser(): Promise<string>{
         const newUser: userData = inicializeUserData();
         let userId = await loadUser(newUser);
+        localStorage.setItem("userId",userId);
         return userId;
     }
 
