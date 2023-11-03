@@ -1,9 +1,7 @@
+
 <li>
-    <div class="imagen">
-    <h3>{{userGame.name}}</h3>
-    <img src = "{{userGame.image}}" alt = "{{userGame.name}} image">
-    </div>
     <ul class = "list">
+        <li class="imagen"><h3>{{userGame.name}}</h3><img src = "{{userGame.image}}" alt = "{{userGame.name}} image"></li>
         <li [ngClass]="compareNumber(userGame.rating,systemGame.rating)">valoracion: {{userGame.rating}}</li>
         <li [ngClass]="compareString(d,systemGame.developers)" *ngFor = "let d of userGame.developers"> desarrollador: {{d}} </li>
         <li [ngClass]="compareDate(userGame.relased,systemGame.relased)"> Fecha de Lanzamiento: {{userGame.relased[2]}}/{{userGame.relased[1]}}/{{userGame.relased[0]}} </li>

@@ -19,36 +19,42 @@
 }
 
 li{
+    max-height: 220px;
     display: flex;
     flex-direction: row;
-    max-height: 220px;
-    justify-content: center;
+    margin: 5px;
+    animation: lista 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .imagen{
-    margin: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-    width: 200px;
 }
+
 .imagen img{
-    height: 100%;
-    width: 100%;
+    width: 200px;
+    height: 200px;
 }
+
 
 .list{
-    max-width: 60vh;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: row;  
+    align-items: center;    
 }
 
-.list li{
-    margin: 5px;
-}
+
+ @keyframes lista {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
 
 .tags{
     background-color: gray;
