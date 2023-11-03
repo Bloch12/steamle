@@ -19,17 +19,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db: Firestore = getFirestore(app);
 
-// Get a list of cities from your database
+// methods for users
 
-export async function addUser() {
-    const newUser: userData = inicializeUserData();
+export async function addUser(newUser: userData) {
     const userReference = await addDoc(collection(db,"users"), newUser);
     const userId = userReference.id;
-    localStorage.setItem("userId", userId);
+    return userId;
 }
 
 
-export async function getUser(userId: string) {
+export async function getUser(userId: string): Promise<userData> {
     const userReference = await getDoc(doc(db, "users", userId));
-    return userReference.data();
+    return <userData> userReference.data();
 }

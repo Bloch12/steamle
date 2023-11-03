@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {addUser,getUser} from '../config/config';
+import { userService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +9,11 @@ import {addUser,getUser} from '../config/config';
 })
 
 
+
 export class AppComponent {
-  async ngOnInit(){
-    if(!localStorage.getItem("userId"))
-      await addUser(); 
-    const user: string | null = localStorage.getItem("userId");
-    if(user != null){
-      getUser(user).then((user) => {
-        console.log(user);
-      });
-    }
-     
-  } 
+  constructor(private userService: userService){}
+  
+  ngOnInit(){
+      this.userService.validateUser();
+  }
 }
