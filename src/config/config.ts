@@ -2,8 +2,8 @@
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getFirestore, collection, addDoc, Firestore, getDoc, doc} from 'firebase/firestore';
-import {userData,inicializeUserData} from '../models/user';
+import { getFirestore, collection, addDoc, Firestore, getDoc,setDoc, doc} from 'firebase/firestore';
+import {userData} from '../models/user';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -31,4 +31,8 @@ export async function addUser(newUser: userData) {
 export async function getUser(userId: string): Promise<userData> {
     const userReference = await getDoc(doc(db, "users", userId));
     return <userData> userReference.data();
+}
+
+export async function setWinGame1(userId: string, user: userData) {
+    await setDoc(doc(db, "users", userId), user);
 }

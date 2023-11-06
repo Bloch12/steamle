@@ -2,30 +2,35 @@ import { inject, Injectable } from "@angular/core";
 import { Game } from "src/models/game";
 import { HttpClient } from "@angular/common/http";
 import { GameJson } from "src/models/game";
+import { userService } from "./user.service";
 
 
 @Injectable({providedIn: 'root'})
 export class searchedGamesSercice{
+    constructor(private userService: userService){};
     randomGame!: Game;
     searchedGames: Game[] = [];
+    isWin: boolean = false;
     http = inject(HttpClient);
 
-    addGame(gameId: number){
-        const url: string = "https://api.rawg.io/api/games/" + gameId + "?key=6bf148d28f1c48dd90a904b72e52b717";
-        this.http.get(url).subscribe(async (res: any) => {
-            const game = (this.loadGame(res));
-            this.searchedGames.push(game);
-            this.loadGames();
-        });
+    async addGame(gameId: number){
+        const game: Game = await this.getGame(gameId); 
+        this.searchedGames.push(game);
+        this.loadGames();
+        if(game.name === this.randomGame.name){
+            this.addWin();
+        }
     }
 
     getGames(){
         if(localStorage.getItem("searchedGames")){
-            if(localStorage.getItem("date") == JSON.stringify(this.getCurrentDate())) {
-                this.searchedGames = JSON.parse(localStorage.getItem("searchedGames") || "");
+            if(localStorage.getItem("date") != JSON.stringify(this.getCurrentDate())) {
+                localStorage.removeItem("searchedGames");
+                localStorage.removeItem("date");
+                this.isWin = false;
+                return; 
             }
-            localStorage.removeItem("searchedGames");
-            localStorage.removeItem("date");
+            this.searchedGames = JSON.parse(localStorage.getItem("searchedGames") || "");
         }
     }
 
@@ -35,8 +40,26 @@ export class searchedGamesSercice{
         localStorage.setItem("date", JSON.stringify(dateArray));
     }
 
-    getRandomGame(){
-        this.http.get<GameJson[]>("../../assets/names.json").subscribe(res =>{
+    getJsonGame(): Promise<GameJson[]>{
+        return new Promise((resolve, reject) => {
+            this.http.get<GameJson[]>("../../assets/names.json").subscribe(res =>{
+                resolve(res);
+            });
+        }); 
+    }
+
+    getGame(gameId: number): Promise<Game>{
+        return new Promise((resolve, reject) => {
+            const url: string = "https://api.rawg.io/api/games/" + gameId + "?key=6bf148d28f1c48dd90a904b72e52b717";
+            this.http.get(url).subscribe(async (res: any) => {
+                const game = (this.loadGame(res));
+                resolve(game);
+            });
+        });
+    }
+
+    async getRandomGame(){
+            const res = await this.getJsonGame();
             const maxRange: number = res.length;
             let dateArray= this.getCurrentDate();
             let seed = dateArray[0] * (dateArray[1] + 1) + dateArray[2];
@@ -44,18 +67,9 @@ export class searchedGamesSercice{
             random = random - Math.floor(random);
             random = random * maxRange;
             random = Math.floor(random);
-            
-            this.http.get<GameJson[]>("../../assets/names.json").subscribe(res =>{
-                let aux:GameJson = res[random];
-                const url = "https://api.rawg.io/api/games/" + aux.id + "?key=6bf148d28f1c48dd90a904b72e52b717";
-                this.http.get(url).subscribe((res: any) => {
-                    this.randomGame = this.loadGame(res);
-                    console.log(this.randomGame);
-                });
-            }); 
-        });   
+            const Gameid = res[random].id;
+            this.randomGame = await this.getGame(Gameid);
     }
-
 
 
     getCurrentDate(): number[]{
@@ -86,8 +100,16 @@ export class searchedGamesSercice{
         res.developers.forEach((developer: any) => {
             game.developers.push(developer.name);
         });
-
+        console.log(game);
         return game;
+    }
+
+    setWin(){
+        this.isWin = true;
+    }
+
+    addWin(){
+        this.userService.addAWinGame1(this.getCurrentDate(),this.searchedGames.length);
     }
 
     textToDate(texto: string): number[] {

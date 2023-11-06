@@ -7,10 +7,11 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FormsModule } from '@angular/forms';
 import { ComparadorComponent } from './comparador/comparador.component';
 import { HeaderComponent } from './header/header.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ComparedGameComponent } from './compared-game/compared-game.component';
 import { FooterComponent } from './footer/footer.component';
-import { IndexComponent } from './index/index.component'; 
+import { IndexComponent } from './index/index.component';
+import { Game2Component } from './game2/game2.component'; 
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { IndexComponent } from './index/index.component';
     HeaderComponent,
     ComparedGameComponent,
     FooterComponent,
-    IndexComponent
+    IndexComponent,
+    Game2Component
   ],
   imports: [
     BrowserModule,

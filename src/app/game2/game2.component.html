@@ -1,0 +1,11 @@
+<section *ngIf="!isGame">
+    <button (click)="starGame()">Start</button>
+
+</section>
+
+<section *ngIf="isGame">
+    <p>{{timer}}</p>
+    <search-bar (button)="ComparedGames($event)"></search-bar>
+    <img src="{{currentGame.image}}" alt="Game Image">
+    <button (click)="selectGame()">Next</button>
+</section>

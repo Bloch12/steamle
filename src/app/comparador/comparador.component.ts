@@ -17,24 +17,21 @@ export class ComparadorComponent{
     http = inject(HttpClient);
     hint: boolean = false;
 
-    public addGame(search:String | undefined){
+    public async addGame(search:String | undefined){
         if(!search)
             return;
 
         if(this.searchedGamesService.searchedGames.find((game: Game) => game.name.toLowerCase() === search.toLowerCase()))
             return;
 
-        this.http.get<GameJson[]>("../../assets/names.json").subscribe(res =>{
-            const games:GameJson[] = res;
-            const game: GameJson | undefined = games.find((game: any) => game.name.toLowerCase() === search.toLowerCase());
-            
-            if(!game){
-                alert("No se encontró el juego");
-                return;
-            }
-            
-            this.searchedGamesService.addGame(game.id);
-      });
+        const res: GameJson[] = await this.searchedGamesService.getJsonGame();
+        const game: GameJson | undefined = res.find((game: any) => game.name.toLowerCase() === search.toLowerCase());
+        if(!game){
+            alert("No se encontró el juego");
+            return;
+        }
+
+        this.searchedGamesService.addGame(game.id);
     }
 
     getSearchedGames(){
@@ -43,6 +40,10 @@ export class ComparadorComponent{
 
     getRandomGame(){
         return this.searchedGamesService.randomGame;
+    }
+
+    getIsWin(){
+        return this.searchedGamesService.isWin;
     }
   
     setHintTrue(){

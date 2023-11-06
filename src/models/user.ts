@@ -18,8 +18,8 @@ export function inicializeUserData(): userData{
 
 function inicializeGame1Data(): game1Data{
     return {
-        lastWin: [],
+        lastWin: [] = [0,0,0],
         winStreak: 0,
-        winArray: []
+        winArray: [] = [0,0,0,0,0,0,0,0,0,0]
     }
 }

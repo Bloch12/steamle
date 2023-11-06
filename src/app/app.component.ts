@@ -14,10 +14,9 @@ import { userService } from './services/user.service';
 export class AppComponent {
   constructor(private userService: userService, private searchedGamesService: searchedGamesSercice){}
   
-  ngOnInit(){
+  async ngOnInit(){
       this.userService.validateUser();
       this.searchedGamesService.getGames();
-      this.searchedGamesService.getRandomGame();
-      console.log(this.searchedGamesService.randomGame);
+      await this.searchedGamesService.getRandomGame();
   }
 }
