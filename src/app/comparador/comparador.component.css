@@ -11,10 +11,33 @@
 search-bar{
     display: flex;
     justify-content: center;
-    margin: 100px;
+    margin: 80px;
 }
 
 
 .comparatorContainter{
     min-height: 67vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+
+
+.pista button{
+    background-color: #75b7e6;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: large;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 900;
+    color: #171d25;
+}
+
+.pista img{
+    max-height: 200px;
+}
+
+

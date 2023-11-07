@@ -46,7 +46,7 @@ export class ComparadorComponent{
         return this.searchedGamesService.isWin;
     }
   
-    setHintTrue(){
-        this.hint = true;
+    changeHintState(){
+        this.hint = !this.hint;
     }
 }
