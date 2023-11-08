@@ -9,3 +9,24 @@ body{
     overflow-x: hidden;
 }
 
+ /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: none;
+    scrollbar-color: #75b7e6 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 20px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background-color: #171d25;
+    
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #75b7e6;
+  border-radius: 5px;
+  }
