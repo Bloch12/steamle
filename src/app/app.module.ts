@@ -11,7 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComparedGameComponent } from './compared-game/compared-game.component';
 import { FooterComponent } from './footer/footer.component';
 import { IndexComponent } from './index/index.component';
-import { Game2Component } from './game2/game2.component'; 
+import { Game2Component } from './game2/game2.component';
+import { WiningSingComponent } from './wining-sing/wining-sing.component'; 
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { Game2Component } from './game2/game2.component';
     ComparedGameComponent,
     FooterComponent,
     IndexComponent,
-    Game2Component
+    Game2Component,
+    WiningSingComponent
   ],
   imports: [
     BrowserModule,

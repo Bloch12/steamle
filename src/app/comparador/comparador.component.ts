@@ -2,6 +2,8 @@ import { Component, inject} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Game, GameJson } from '../../models/game';
 import { searchedGamesSercice } from '../services/searchedGames.service';
+import { userService } from '../services/user.service';
+import { userData } from 'src/models/user';
 
 
 
@@ -12,7 +14,7 @@ import { searchedGamesSercice } from '../services/searchedGames.service';
 })
 
 export class ComparadorComponent{
-    constructor(private searchedGamesService: searchedGamesSercice){}
+    constructor(private searchedGamesService: searchedGamesSercice,private user:userService){}
 
     http = inject(HttpClient);
     hint: boolean = false;
@@ -48,5 +50,11 @@ export class ComparadorComponent{
   
     changeHintState(){
         this.hint = !this.hint;
+    }
+    getUserData():userData{
+        return this.user.getUserData();
+    }
+    getTotalWins():number{
+        return this.user.getTotalWins();
     }
 }

@@ -34,6 +34,15 @@ export class userService{
         this.userData.game1.lastWin = date;
         (this.userData.game1.winArray[trys-1])++;
         await setWinGame1(this.id, this.userData);
-
+    }
+    getUserData():userData{
+        return this.userData;
+    }
+    getTotalWins():number{
+        let rta = 0;
+        this.userData.game1.winArray.forEach((element)=>{
+            rta += element;
+        });
+        return rta;
     }
 }
