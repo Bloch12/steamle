@@ -71,6 +71,16 @@ export class searchedGamesSercice{
             this.randomGame = await this.getGame(Gameid);
     }
 
+    async getARandomGame(): Promise<Game>{
+        const res = await this.getJsonGame();
+        const maxRange: number = res.length;
+        let random:number = Math.random() * maxRange;
+        random = Math.floor(random);
+        const Gameid = res[random].id;
+        const randomGame = await this.getGame(Gameid);
+        return randomGame;
+    }
+
 
     getCurrentDate(): number[]{
         let date = new Date();

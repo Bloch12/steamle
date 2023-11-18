@@ -1,0 +1,23 @@
+
+.imagen{
+    display: flex;
+    justify-content: center;   
+}
+
+.imagen h3{
+    position: absolute;
+    opacity: 0;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.imagen:hover >h3{
+    opacity: 1;  
+}
+
+.imagen img{
+    width: 130px;
+    height: 130px;
+    border-radius: 15px;
+}

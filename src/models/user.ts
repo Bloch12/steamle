@@ -1,9 +1,8 @@
 export interface userData{
     game1: game1Data;
-    game2: game2Data;   
+    game2: game2Data;
+    game3: game2Data; 
 }
-
-
 
 interface game1Data{
     lastWin: number[];
@@ -15,6 +14,7 @@ interface game2Data{
     Leadboararray: Leadboard[];
 }
 
+
 interface Leadboard{
     name: string;
     score: number;
@@ -23,7 +23,8 @@ interface Leadboard{
 export function inicializeUserData(): userData{
     return {
         game1: inicializeGame1Data(),
-        game2: inicializeGame2Data()
+        game2: inicializeGame2Data(),
+        game3: inicializeGame3Data()
     }
 }
 
@@ -43,6 +44,18 @@ export function inicializeGame2Data(): game2Data{
             inicializeLeadboard("ccc",300),
             inicializeLeadboard("bbb",200),
             inicializeLeadboard("aaa",100)
+          ]
+    }
+}
+
+export function inicializeGame3Data(): game2Data{
+    return {
+        Leadboararray: [] = [
+            inicializeLeadboard("eee",5),
+            inicializeLeadboard("ddd",4),
+            inicializeLeadboard("ccc",3),
+            inicializeLeadboard("bbb",2),
+            inicializeLeadboard("aaa",1)
           ]
     }
 }

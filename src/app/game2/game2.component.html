@@ -6,7 +6,7 @@
 <section *ngIf="isGame">
     <div>
     <p>{{timer}}</p> 
-    <span>Puntaje: {{puntaje}}</span>
+    <span>Puntaje: {{score}}</span>
     </div>
     <img src="{{currentGame.image}}" alt="Game Image">
     <search-bar (button)="ComparedGames($event)"></search-bar>

@@ -14,8 +14,8 @@ export class Game2Component {
   isGame : boolean = false;
   gameJson! : GameJson[];
   currentGame! : GameJson;
-  timer: number= 30;
-  puntaje: number = 0;
+  timer: number= 100;
+  score: number = 0;
   combo: number = 0;
   constructor(private searchedGames: searchedGamesSercice, private user: userService, private dialog: MatDialog) { }
   
@@ -26,7 +26,7 @@ export class Game2Component {
 
   async starGame(){
     this.changeState();
-    this.puntaje = 0;
+    this.score = 0;
     this.combo = 0;
     if(!this.gameJson){
       this.gameJson = await this.searchedGames.getJsonGame();
@@ -41,7 +41,7 @@ export class Game2Component {
   } 
 
   starTimer(){
-      this.timer = 30;
+      this.timer = 100;
       let interval = setInterval(() => {
         if(this.timer > 0){
           this.timer--;
@@ -60,7 +60,7 @@ export class Game2Component {
   }
 
   guessGame(){
-    this.puntaje+=100 + (this.combo * 50);
+    this.score+=100 + (this.combo * 50);
     this.combo++;
     this.selectGame();
   }
@@ -76,19 +76,19 @@ export class Game2Component {
 
   endGame(){
     this.changeState();
-    if(this.puntaje > this.user.getUserData().game2.Leadboararray[4].score){
+    if(this.score > this.user.getUserData().game2.Leadboararray[4].score){
       this.openDialog();
     }
   }
 
   openDialog() {
     const dialogRef = this.dialog.open(ScoreFormComponent, 
-      { data: {score: this.puntaje}, 
+      { data: {score: this.score}, 
         disableClose: true
       });
     
     dialogRef.afterClosed().subscribe(result=> {
-      this.user.addAWinGame2(result, this.puntaje);
+      this.user.addAWinGame2(result, this.score);
     });
   }
 
