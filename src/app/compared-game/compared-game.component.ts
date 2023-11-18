@@ -31,6 +31,20 @@ export class ComparedGameComponent implements OnInit {
     return 'red';
   }
 
+  compareArray(userArray: string[], systemArray: string[]): string{
+    let response: string = 'red';
+    userArray.sort();
+    systemArray.sort();
+    if(userArray === systemArray)
+      response = 'green';
+    else
+      systemArray.forEach(systemElement => {
+        if(userArray.find(userElement=>userElement===systemElement))
+          response = 'orange';
+      });
+    return response;
+  }
+
   compareDate(userDate: number[], systemDate: number[]): string{
     let response: string = this.compareNumber(userDate[0], systemDate[0]);  
     if(response !== 'green')
@@ -47,6 +61,14 @@ export class ComparedGameComponent implements OnInit {
   ngOnInit(): void {
       if(this.userGame.name === this.systemGame.name)
         this.searchedGamesService.setWin();
+  }
+
+  showArray(array: string[]): string{
+    let response: string = '';
+    array.forEach(element => {
+      response += '\n' + element ;
+    });
+    return response;
   }
 
 }

@@ -35,14 +35,27 @@ export class userService{
         (this.userData.game1.winArray[trys-1])++;
         await setWinGame1(this.id, this.userData);
     }
+
     getUserData():userData{
         return this.userData;
     }
+
     getTotalWins():number{
         let rta = 0;
         this.userData.game1.winArray.forEach((element)=>{
             rta += element;
         });
         return rta;
+    }
+
+    async addAWinGame2(name: string, score: number){
+        this.userData.game2.Leadboararray.push({name: name, score: score});
+        this.userData.game2.Leadboararray.sort((a,b)=>b.score-a.score);
+        this.userData.game2.Leadboararray.pop();
+        await setWinGame1(this.id, this.userData);
+    }
+
+    public getGame2Leadboard(): {name: string, score: number}[]{
+        return this.userData.game2.Leadboararray;
     }
 }

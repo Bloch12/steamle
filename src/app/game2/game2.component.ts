@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { GameJson } from 'src/models/game';
 import { searchedGamesSercice} from '../services/searchedGames.service';
+import { userService } from '../services/user.service';
+import {MatDialog} from '@angular/material/dialog';
+import { ScoreFormComponent } from '../score-form/score-form.component';
 
 @Component({
   selector: 'app-game2',
@@ -11,8 +14,10 @@ export class Game2Component {
   isGame : boolean = false;
   gameJson! : GameJson[];
   currentGame! : GameJson;
-  timer: number= 60;
-  constructor(private searchedGames: searchedGamesSercice) { }
+  timer: number= 30;
+  puntaje: number = 0;
+  combo: number = 0;
+  constructor(private searchedGames: searchedGamesSercice, private user: userService, private dialog: MatDialog) { }
   
   
   changeState(){
@@ -21,6 +26,8 @@ export class Game2Component {
 
   async starGame(){
     this.changeState();
+    this.puntaje = 0;
+    this.combo = 0;
     if(!this.gameJson){
       this.gameJson = await this.searchedGames.getJsonGame();
     }
@@ -34,20 +41,56 @@ export class Game2Component {
   } 
 
   starTimer(){
-      this.timer = 60;
+      this.timer = 30;
       let interval = setInterval(() => {
         if(this.timer > 0){
           this.timer--;
         }else{
-          this.changeState();
           clearInterval(interval);
+          this.endGame();
         }
       }, 1000);
   }
  
   ComparedGames(gameName: string | undefined){
     if(this.currentGame.name == gameName)
-      this.selectGame();
+      this.guessGame();
+    else
+      this.combo = 0;
   }
+
+  guessGame(){
+    this.puntaje+=100 + (this.combo * 50);
+    this.combo++;
+    this.selectGame();
+  }
+
+  chengeGame(){
+    this.combo = 0;
+    this.selectGame();
+  }
+
+  getLeaderboardGame2(): {name: string, score: number}[]{
+      return this.user.getGame2Leadboard();
+  }
+
+  endGame(){
+    this.changeState();
+    if(this.puntaje > this.user.getUserData().game2.Leadboararray[4].score){
+      this.openDialog();
+    }
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(ScoreFormComponent, 
+      { data: {score: this.puntaje}, 
+        disableClose: true
+      });
+    
+    dialogRef.afterClosed().subscribe(result=> {
+      this.user.addAWinGame2(result, this.puntaje);
+    });
+  }
+
 
 }

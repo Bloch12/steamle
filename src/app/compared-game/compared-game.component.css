@@ -18,6 +18,11 @@
     font-weight: bold;
 }
 
+.orange{
+    background-color: orange;
+    font-weight: bold;
+}
+
 li{
     max-height: 220px;
     display: flex;
@@ -135,5 +140,12 @@ li{
 }
 .item:nth-child(7){
     animation-delay: 3.5s;
+}
+
+.arrays{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 

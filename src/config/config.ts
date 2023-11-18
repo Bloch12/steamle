@@ -36,3 +36,7 @@ export async function getUser(userId: string): Promise<userData> {
 export async function setWinGame1(userId: string, user: userData) {
     await setDoc(doc(db, "users", userId), user);
 }
+
+export async function setWinGame2(userId: string, user: userData) {
+    await setDoc(doc(db, "users", userId), user);
+}

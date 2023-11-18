@@ -12,7 +12,12 @@ import { ComparedGameComponent } from './compared-game/compared-game.component';
 import { FooterComponent } from './footer/footer.component';
 import { IndexComponent } from './index/index.component';
 import { Game2Component } from './game2/game2.component';
-import { WiningSingComponent } from './wining-sing/wining-sing.component'; 
+import { WiningSingComponent } from './wining-sing/wining-sing.component';
+import { LeadboardComponent } from './leadboard/leadboard.component';
+import { ScoreFormComponent } from './score-form/score-form.component'; 
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -25,13 +30,18 @@ import { WiningSingComponent } from './wining-sing/wining-sing.component';
     FooterComponent,
     IndexComponent,
     Game2Component,
-    WiningSingComponent
+    WiningSingComponent,
+    LeadboardComponent,
+    ScoreFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
