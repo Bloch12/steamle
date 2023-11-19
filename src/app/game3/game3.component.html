@@ -1,20 +1,22 @@
-<section *ngIf="!isGame">
+<section class="menu" *ngIf="!isGame">
     <app-leadboard [leadboard]="leaderBoard"></app-leadboard>
     <button (click)="startGame()">Start</button>
 </section>
 
-<section *ngIf="isGame">
-    <span>Puntaje: {{score}}</span>
+<section class="juego"  *ngIf="isGame">
+    <span class="score">Puntaje:{{score}}</span>
     <div class="imagen">
         <h3>{{currentGame.name}}</h3>
-        <img src="{{currentGame.image}}" alt="{{currentGame.name}} Image">
+        <img  src="{{currentGame.image}}" alt="{{currentGame.name}} Image">
+        <h2 class="actual">{{currentGame.rating}}</h2>
     </div>
-    <h3>{{currentGame.rating}}</h3>
+    
     <div class="imagen">
         <h3>{{compareGame.name}}</h3>
         <img src="{{compareGame.image}}" alt="{{compareGame.name}} Image">
+        <div class="botones">
+        <button (click)="guessGame(false)">Mas</button>
+        <button (click)="guessGame(true)" >Menos</button>
+        </div>
     </div>
-    <br>
-    <button (click)="guessGame(true)">Menor/Igual</button>
-    <button (click)="guessGame(false)">Mayor</button>
 </section>

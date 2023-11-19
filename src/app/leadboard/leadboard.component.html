@@ -1,6 +1,8 @@
-<ul>
-    <li *ngFor="let user of leadboard">
-        <span>{{user.name}}</span>
-        <span>{{user.score}}</span>
-    </li>
-</ul>
+<div>
+    <h3>HIGHSCORES</h3>
+    <ul>
+        <li *ngFor="let user of leadboard">
+            <p>{{user.name}} </p> <p> {{user.score}}</p>
+        </li>
+    </ul>
+</div>

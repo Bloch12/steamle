@@ -1,4 +1,23 @@
 section{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    text-align: center;
+    border-style: solid;
+    border-color: aliceblue;
+    border-radius: 5px;
+    padding: 10px;
+    background-color:#75b7e6;
+    align-items: center;
+}
+
+button{
+    background-color: #171d25;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: large;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 900;
+    color: aliceblue;
+    width: 160px;
 }

@@ -10,7 +10,6 @@ import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ComparedGameComponent } from './compared-game/compared-game.component';
 import { FooterComponent } from './footer/footer.component';
-import { IndexComponent } from './index/index.component';
 import { Game2Component } from './game2/game2.component';
 import { WiningSingComponent } from './wining-sing/wining-sing.component';
 import { LeadboardComponent } from './leadboard/leadboard.component';
@@ -29,7 +28,6 @@ import { Game3Component } from './game3/game3.component';
     HeaderComponent,
     ComparedGameComponent,
     FooterComponent,
-    IndexComponent,
     Game2Component,
     WiningSingComponent,
     LeadboardComponent,

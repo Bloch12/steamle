@@ -8,9 +8,10 @@ import { Component, Input } from '@angular/core';
 export class WiningSingComponent {
   @Input() winingText!: string;
   @Input() shareText!: string;
-
+ 
   share() {
       navigator.clipboard.writeText(this.shareText);
+      alert("contenido copiado en el portapapeles");
   }
   
 

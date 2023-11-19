@@ -82,14 +82,15 @@ li{
     justify-content: center;
     white-space: nowrap;
     font-weight: lighter;
-    animation-delay: 4s;
+    animation-delay: 3s;
 }
 
 .tagsdirection{
     max-height: 130px;
+    width: 150px;
     overflow: auto;
     animation: bar 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation-delay:4s;
+    animation-delay:3s;
 }
 
 
@@ -135,12 +136,8 @@ li{
 .item:nth-child(5){
     animation-delay: 2.5s;
 }
-.item:nth-child(6){
-    animation-delay: 3s;
-}
-.item:nth-child(7){
-    animation-delay: 3.5s;
-}
+
+
 
 .arrays{
     display: flex;

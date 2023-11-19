@@ -1,0 +1,45 @@
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 10px;
+    background-color: #171d25;
+    border-color: #75b7e6;
+}
+
+
+div{
+    background-color: #171d25;
+    border-color: #75b7e6;
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+
+button{
+    background-color: #75b7e6;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 900;
+    color: #171d25; 
+    margin: 10px;
+}
+
+h2{
+    color: white;
+}
+
+p{
+    color: red;
+    font-weight: 900;
+}
+
