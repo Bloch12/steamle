@@ -14,9 +14,10 @@
     <div class="imagen">
         <h3>{{compareGame.name}}</h3>
         <img src="{{compareGame.image}}" alt="{{compareGame.name}} Image">
-        <div class="botones">
+        <div *ngIf="!showScore" class="botones">
         <button (click)="guessGame(false)">Mas</button>
         <button (click)="guessGame(true)" >Menos</button>
         </div>
+        <h2 *ngIf="showScore" class="actual">{{compareGame.rating}}</h2>
     </div>
 </section>

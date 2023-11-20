@@ -1,0 +1,18 @@
+div{
+    background-color: #171d25;
+    border-color: #75b7e6;
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+h1{
+    color: white;
+}
+
+h2{
+    color: white;
+}

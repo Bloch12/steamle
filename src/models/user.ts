@@ -2,6 +2,7 @@ export interface userData{
     game1: game1Data;
     game2: game2Data;
     game3: game2Data; 
+    adm: boolean;
 }
 
 interface game1Data{
@@ -24,7 +25,8 @@ export function inicializeUserData(): userData{
     return {
         game1: inicializeGame1Data(),
         game2: inicializeGame2Data(),
-        game3: inicializeGame3Data()
+        game3: inicializeGame3Data(),
+        adm: false,
     }
 }
 

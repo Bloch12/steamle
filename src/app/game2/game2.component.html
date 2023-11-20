@@ -1,12 +1,12 @@
-<section *ngIf="!isGame">
+<section class="menu" *ngIf="!isGame">
     <app-leadboard [leadboard]="getLeaderboardGame2()"></app-leadboard>
     <button (click)="starGame()">Start</button>
 </section>
 
-<section *ngIf="isGame">
+<section class="game" *ngIf="isGame">
     <div>
-    <p>{{timer}}</p> 
-    <span>Puntaje: {{score}}</span>
+    <p [ngClass]="color">{{timer}}</p> 
+    <span [ngClass]="color">Puntaje: {{score}}</span>
     </div>
     <img src="{{currentGame.image}}" alt="Game Image">
     <search-bar (button)="ComparedGames($event)"></search-bar>

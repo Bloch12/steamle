@@ -4,6 +4,7 @@ import { searchedGamesSercice} from '../services/searchedGames.service';
 import { userService } from '../services/user.service';
 import {MatDialog} from '@angular/material/dialog';
 import { ScoreFormComponent } from '../score-form/score-form.component';
+import { LoseSingComponent } from '../lose-sing/lose-sing.component';
 
 @Component({
   selector: 'app-game2',
@@ -17,6 +18,7 @@ export class Game2Component {
   timer: number= 100;
   score: number = 0;
   combo: number = 0;
+  color: string = "white";
   constructor(private searchedGames: searchedGamesSercice, private user: userService, private dialog: MatDialog) { }
   
   
@@ -53,10 +55,13 @@ export class Game2Component {
   }
  
   ComparedGames(gameName: string | undefined){
-    if(this.currentGame.name == gameName)
+    if(this.currentGame.name == gameName){
+      this.changeColor("green");
       this.guessGame();
-    else
+    }else{
       this.combo = 0;
+      this.changeColor("red");
+    }
   }
 
   guessGame(){
@@ -75,9 +80,10 @@ export class Game2Component {
   }
 
   endGame(){
-    this.changeState();
     if(this.score > this.user.getUserData().game2.Leadboararray[4].score){
       this.openDialog();
+    }else{
+      this.openDialog2();
     }
   }
 
@@ -89,8 +95,30 @@ export class Game2Component {
     
     dialogRef.afterClosed().subscribe(result=> {
       this.user.addAWinGame2(result, this.score);
+      this.changeState();
     });
   }
+
+  openDialog2() {
+    const dialogRef = this.dialog.open(LoseSingComponent, 
+      { data: {score: this.score}});
+    
+    dialogRef.afterClosed().subscribe(result=> {
+      this.isGame = false;
+      this.changeState();
+    });
+  }
+
+  changeColor(color: string){
+    this.color = color;
+    let interval = setInterval(() => {
+      this.color = "white";
+      clearInterval(interval);
+    }, 1000);
+  }
+
+
+  
 
 
 }

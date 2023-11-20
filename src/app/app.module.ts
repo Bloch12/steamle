@@ -18,6 +18,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Game3Component } from './game3/game3.component';
+import { RulesComponent } from './rules/rules.component';
+import { JsonDataComponent } from './json-data/json-data.component';
+import { LoseSingComponent } from './lose-sing/lose-sing.component';
 
 
 @NgModule({
@@ -32,7 +35,10 @@ import { Game3Component } from './game3/game3.component';
     WiningSingComponent,
     LeadboardComponent,
     ScoreFormComponent,
-    Game3Component
+    Game3Component,
+    RulesComponent,
+    JsonDataComponent,
+    LoseSingComponent
   ],
   imports: [
     BrowserModule,

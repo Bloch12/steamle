@@ -4,6 +4,7 @@ import { Game, GameJson } from '../../models/game';
 import { searchedGamesSercice } from '../services/searchedGames.service';
 import { userService } from '../services/user.service';
 import { userData } from 'src/models/user';
+import { MatDialog } from '@angular/material/dialog';
 
 
 
@@ -14,7 +15,7 @@ import { userData } from 'src/models/user';
 })
 
 export class ComparadorComponent{
-    constructor(private searchedGamesService: searchedGamesSercice,private user:userService){}
+    constructor(private searchedGamesService: searchedGamesSercice,private user:userService, private dialog: MatDialog){}
 
     http = inject(HttpClient);
     hint: boolean = false;
@@ -36,25 +37,27 @@ export class ComparadorComponent{
         this.searchedGamesService.addGame(game.id);
     }
 
-    getSearchedGames(){
+    get SearchedGames(){
         return this.searchedGamesService.searchedGames;
     }
 
-    getRandomGame(){
+    get RandomGame(){
         return this.searchedGamesService.randomGame;
     }
 
-    getIsWin(){
+    get IsWin(){
         return this.searchedGamesService.isWin;
     }
   
     changeHintState(){
         this.hint = !this.hint;
     }
-    getUserData():userData{
+
+    get UserData():userData{
         return this.user.getUserData();
     }
-    getTotalWins():number{
+
+    get TotalWins():number{
         return this.user.getTotalWins();
     }
 }

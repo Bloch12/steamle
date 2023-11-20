@@ -78,4 +78,9 @@ export class userService{
     public getGame3Leadboard(): {name: string, score: number}[]{
         return this.userData.game3.Leadboararray;
     }
+
+    public async isAdm(): Promise<boolean>{
+        await this.validateUser();
+        return (this.userData && this.userData.adm)
+    }
 }

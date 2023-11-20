@@ -1,14 +1,14 @@
 <section>
-  <p class="Stats">🔥Racha de Victorias {{getUserData().game1.winStreak}}🔥  👑Cantidad de Victorias {{getTotalWins()}}👑</p>
+  <p class="Stats">🔥Racha de Victorias {{UserData.game1.winStreak}}🔥  👑Cantidad de Victorias {{TotalWins}}👑</p>
 </section>
 <section class = "comparatorContainter">
-  <search-bar *ngIf="!getIsWin()" (button)="addGame($event)"></search-bar>
+  <search-bar *ngIf="!IsWin" (button)="addGame($event)"></search-bar>
   <div class="pista">
-    <button *ngIf = "getSearchedGames().length >= 3 && !hint" (click) = changeHintState()> Pista</button>
-    <img *ngIf = "hint"  src="{{getRandomGame().image}}" alt = "randomGame.name image" (click) = changeHintState() >
+    <button *ngIf = "SearchedGames.length >= 3 && !hint" (click) = changeHintState()> Pista</button>
+    <img *ngIf = "hint"  src="{{RandomGame.image}}" alt = "randomGame.name image" (click) = changeHintState() >
   </div>
   
-  <ul class="Indice" *ngIf="getSearchedGames().length > 0">
+  <ul class="Indice" *ngIf="SearchedGames.length > 0">
     <li><p>Juego</p></li>
     <li><p>Valoracion</p></li>
     <li><p>Desarrolladores</p></li>
@@ -17,10 +17,10 @@
     <li><p>Tags</p></li>
   </ul>
     
-  <ul *ngIf="getRandomGame()" class="comparedGames">
-    <app-compared-game  *ngFor = "let s of getSearchedGames()" [userGame]= 's' [systemGame] = "getRandomGame()" ></app-compared-game>
+  <ul *ngIf="RandomGame" class="comparedGames">
+    <app-compared-game  *ngFor = "let s of SearchedGames" [userGame]= 's' [systemGame] = "RandomGame" ></app-compared-game>
   </ul>
-  <app-wining-sing *ngIf = "getIsWin()" winingText="¡Ganaste!... Has adivinado el juego" 
-  shareText="Tu amigo a adivinado el juego del dia en {{getSearchedGames.length}} intentos, y te reta a superarlo: http://localhost:4200/app-game1"> </app-wining-sing>
+  <app-wining-sing *ngIf = "IsWin" winingText="¡Ganaste!... Has adivinado el juego" 
+  shareText="Tu amigo a adivinado el juego del dia en {{SearchedGames.length}} intentos, y te reta a superarlo: http://localhost:4200/app-game1"> </app-wining-sing>
 </section>
 
