@@ -83,6 +83,6 @@ div{
 }
 
 .game{
-    height: 89%;
+    min-height: 89%;
 }
 

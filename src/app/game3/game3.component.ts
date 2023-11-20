@@ -37,7 +37,7 @@ export class Game3Component {
   }
 
   async guessGame(min_equals: boolean){
-    if(min_equals === (this.currentGame.rating < this.compareGame.rating) || this.currentGame.rating === this.compareGame.rating){
+    if(min_equals === (this.currentGame.rating > this.compareGame.rating) || this.currentGame.rating === this.compareGame.rating){
         this.score++;
         this.currentGame = this.compareGame;
         if(!this.currentGame.rating){
