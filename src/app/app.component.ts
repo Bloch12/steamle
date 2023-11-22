@@ -15,8 +15,6 @@ export class AppComponent {
   constructor(private userService: userService, private searchedGamesService: searchedGamesSercice){}
   
   async ngOnInit(){
-      await this.userService.validateUser();
-      console.log(this.userService.getUserData());
       this.searchedGamesService.getGames();
       await this.searchedGamesService.getRandomGame();
   }
